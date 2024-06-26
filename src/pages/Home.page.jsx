@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 // Layout HOC
 import DefaultLayoutHoc from "../layout/Default.layout";
@@ -12,6 +13,27 @@ const HomePage = () => {
   const [recommendedMovies, setRecommendedMovies] = useState([]);
   const [premierMovies, setPremierMovies] = useState([]);
   const [onlineStreamEvents, setOnlineStreamEvents] = useState([]);
+
+  // get.apiName('/', async ()=>{})
+    useEffect(() => {
+      const fetchMovies = async () => {
+        try {
+          // Example search query for 'Star Wars'
+          const response = await axios.get(
+            `http://www.omdbapi.com/?s=starwars&apikey=273fdf67`
+          );
+          if (response.data.Response === "True") {
+            setRecommendedMovies(response.data.Search); // Use Search key for list of movies
+          } else {
+            console.error("OMDb API Error:", response.data.Error);
+          }
+        } catch (error) {
+          console.error("Error fetching data from OMDb API:", error);
+        }
+      };
+
+      fetchMovies();
+    }, []);
 
   return (
     <>
