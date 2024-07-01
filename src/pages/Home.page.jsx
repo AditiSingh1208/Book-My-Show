@@ -16,23 +16,25 @@ const HomePage = () => {
 
   // get.apiName('/', async ()=>{})
     useEffect(() => {
-      const fetchMovies = async () => {
-        try {
-          // Example search query for 'Star Wars'
-          const response = await axios.get(
-            `http://www.omdbapi.com/?s=starwars&apikey=273fdf67`
-          );
-          if (response.data.Response === "True") {
-            setRecommendedMovies(response.data.Search); // Use Search key for list of movies
-          } else {
-            console.error("OMDb API Error:", response.data.Error);
-          }
-        } catch (error) {
-          console.error("Error fetching data from OMDb API:", error);
-        }
-      };
+    const fetchData = async () => {
+      try {
+        const options = {
+          method: "GET",
+          url: "https://moviedatabase8.p.rapidapi.com/Search/Incep",
+          headers: {
+            "x-rapidapi-key":
+              "ac812d1d3dmshae092108c0d068bp1caff5jsn91036acdc98e",
+            "x-rapidapi-host": "moviedatabase8.p.rapidapi.com",
+          },
+        };
+        const response = await axios.request(options);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      fetchMovies();
+    fetchData();
     }, []);
 
   return (
