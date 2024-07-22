@@ -15,27 +15,35 @@ const HomePage = () => {
   const [onlineStreamEvents, setOnlineStreamEvents] = useState([]);
 
   // get.apiName('/', async ()=>{})
-    useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const options = {
-          method: "GET",
-          url: "https://moviedatabase8.p.rapidapi.com/Search/Incep",
-          headers: {
-            "x-rapidapi-key":
-              "ac812d1d3dmshae092108c0d068bp1caff5jsn91036acdc98e",
-            "x-rapidapi-host": "moviedatabase8.p.rapidapi.com",
-          },
-        };
-        const response = await axios.request(options);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+  useEffect(() => {
+    const requestPopularMovies = async () => {
+      const getPopularMovies = await axios.get(
+        "movie/popular?api_key=8590f6898e481564b6e11ec00914c443"
+      );
+      setPremierMovies(getPopularMovies.data.results);
     };
+    requestPopularMovies();
+  }, []);
 
-    fetchData();
-    }, []);
+  useEffect(() => {
+    const requestTopRatedMovies = async () => {
+      const getTopRatedMovies = await axios.get(
+        "movie/top_rated?api_key=8590f6898e481564b6e11ec00914c443"
+      );
+      setRecommendedMovies(getTopRatedMovies.data.results);
+    };
+    requestTopRatedMovies();
+  }, []);
+
+  useEffect(() => {
+    const requestUpcomingMovies = async () => {
+      const getUpcomingMovies = await axios.get(
+        "movie/upcoming?api_key=8590f6898e481564b6e11ec00914c443"
+      );
+      setOnlineStreamEvents(getUpcomingMovies.data.results);
+    };
+    requestUpcomingMovies();
+  }, []);
 
   return (
     <>
