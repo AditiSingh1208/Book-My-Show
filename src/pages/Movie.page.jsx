@@ -7,8 +7,8 @@ import Slider from "react-slick";
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
 import MovieHero from "../components/MovieHero/MovieHero.Component";
-import Cast from "../components/";
-
+import Cast from "../Cast/Cast.Component";
+ 
 const MoviePage = () => {
   const { id } = useParams();
 
