@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
 import MovieHero from "../components/MovieHero/MovieHero.Component";
-import Cast from "../components/";
+import Cast from "../Cast/Cast.Component";
 
 const MoviePage = () => {
   const { id } = useParams();
@@ -20,7 +20,8 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestCast = async () => {
-      const getCast = await axios.get(`/movie/${id}/credits`);
+      const getCast = await axios.get(
+        "movie/{movie_id}/credits?api_key=8590f6898e481564b6e11ec00914c443");
       setCast(getCast.data.cast);
     };
     requestCast();
@@ -28,7 +29,8 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestSimilarMovies = async () => {
-      const getSimilarMovies = await axios.get(`/movie/${id}/similar`);
+      const getSimilarMovies = await axios.get(
+        "movie/${id}/similar?api_key=8590f6898e481564b6e11ec00914c443");
       setSimilarMovies(getSimilarMovies.data.results);
     };
     requestSimilarMovies();
@@ -37,7 +39,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestRecommededMovies = async () => {
       const getRecommendedMovies = await axios.get(
-        `/movie/${id}/recommendations`
+        "movie/${id}/recommendations?api_key=8590f6898e481564b6e11ec00914c443"
       );
       setRecommendedMovies(getRecommendedMovies.data.results);
     };
@@ -46,7 +48,8 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestMovie = async () => {
-      const getMovieDate = await axios.get(`/movie/${id}`);
+      const getMovieDate = await axios.get(
+        "movie/${id}?api_key=8590f6898e481564b6e11ec00914c443");
       setMovie(getMovieDate.data);
     };
     requestMovie();
