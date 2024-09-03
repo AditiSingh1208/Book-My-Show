@@ -1,14 +1,17 @@
+import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-const EntertainmentCard = ({ src }) => {
+const EntertainmentCard = (props) => {
   return (
-    <img
-      src={src}
-      alt="Entertainment"
-      style={{ width: "100%", height: "auto" }}
-    />
+    <>
+      <div>
+        <img
+          className="w-full h-full rounded-lg"
+          src={props.src}
+          alt="entertainment"
+        />
+      </div>
+    </>
   );
 };
 
