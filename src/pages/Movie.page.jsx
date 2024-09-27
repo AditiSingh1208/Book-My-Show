@@ -21,7 +21,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestCast = async () => {
       const getCast = await axios.get(
-        "/movie/${id}/credits");
+        `/movie/${id}/credits?api_key=1aed662c8528ce83f701aabf725f8114`);
       setCast(getCast.data.cast);
     };
     requestCast();
@@ -30,7 +30,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestSimilarMovies = async () => {
       const getSimilarMovies = await axios.get(
-        "movie/${id}/similar?api_key=a84c0eddf5d894d7bdea9370c18793ff");
+        `movie/${id}/similar?api_key=1aed662c8528ce83f701aabf725f8114`);
       setSimilarMovies(getSimilarMovies.data.results);
     };
     requestSimilarMovies();
@@ -39,7 +39,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestRecommededMovies = async () => {
       const getRecommendedMovies = await axios.get(
-        "movie/top_rated?api_key=a84c0eddf5d894d7bdea9370c18793ff"
+        `movie/top_rated?api_key=1aed662c8528ce83f701aabf725f8114`
       );
       setRecommendedMovies(getRecommendedMovies.data.results);
     };
@@ -49,7 +49,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestMovie = async () => {
       const getMovieDate = await axios.get(
-        "movie/${id}?api_key=a84c0eddf5d894d7bdea9370c18793ff");
+        `movie/${id}?api_key=1aed662c8528ce83f701aabf725f8114`);
       setMovie(getMovieDate.data);
     };
     requestMovie();
