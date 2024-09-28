@@ -39,7 +39,7 @@ const MoviePage = () => {
   useEffect(() => {
     const requestRecommededMovies = async () => {
       const getRecommendedMovies = await axios.get(
-        `movie/top_rated?api_key=1aed662c8528ce83f701aabf725f8114`
+        `movie/${id}/recommendations?api_key=1aed662c8528ce83f701aabf725f8114`
       );
       setRecommendedMovies(getRecommendedMovies.data.results);
     };
@@ -98,8 +98,8 @@ const MoviePage = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
       {
@@ -198,8 +198,8 @@ const MoviePage = () => {
             {cast.map((castData) => (
               <Cast
                 image={castData.profile_path}
-                castName={movie.original_name}
-                role={movie.character}
+                castName={castData.original_name}
+                role={castData.character}
               />
             ))}
           </Slider>
