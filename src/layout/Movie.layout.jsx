@@ -7,7 +7,7 @@ const MovieLayoutHoc =
     return <div>
         <MovieNavbar />
         <Component {...props} />
-        <div>Footer</div> 
+        <div></div> 
     </div>;
   };
 
