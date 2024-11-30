@@ -12,13 +12,13 @@ const MovieInfo = () => {
 
   const rentMovie = () => {
     setIsOpen(true);
-    setPrice(149);
+    setPrice(210);
   };
 
-  const buyMovie = () => {
-    setIsOpen(true);
-    setPrice(999);
-  };
+  // const buyMovie = () => {
+  //   setIsOpen(true);
+  //   setPrice(999);
+  // };
 
   return (
     <>
@@ -36,11 +36,11 @@ const MovieInfo = () => {
         </div>
         <div className="flex items-center gap-3 md:px-4 md:w-screen text-xl px-4">
           <button onClick={rentMovie} className="bg-red-500  py-3 text-white font-semibold rounded-lg">
-            Rent Rs.149
+            Book Tickets  
           </button>
-          <button onClick={buyMovie} className="bg-red-500  py-3 text-white font-semibold rounded-lg">
+          {/* <button onClick={buyMovie} className="bg-red-500  py-3 text-white font-semibold rounded-lg">
             Buy Rs.999
-          </button>
+          </button> */}
         </div>
       </div>
     </>
